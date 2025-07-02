@@ -18,7 +18,7 @@ argument_specs:
         default: "/usr/local/bin"
         description:
           - "opentofu installation directory"
-      should_verify_helm_checksum:
+      should_verify_opentofu_checksum:
         type: bool
         required: false
         default: true

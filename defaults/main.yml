@@ -1,4 +1,4 @@
 ---
 opentofu_version: "1.10.2"
 opentofu_bin_dir: "/usr/local/bin"
-should_verify_helm_checksum: true
+should_verify_opentofu_checksum: true
