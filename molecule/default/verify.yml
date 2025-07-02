@@ -1,0 +1,17 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: true
+  vars:
+    opentofu_version: "1.10.2"
+    opentofu_bin_dir: "/usr/local/bin"
+
+  tasks:
+    - name: Get opentofu binary version
+      ansible.builtin.command: "{{ opentofu_bin_dir }}/tofu --version"
+      register: opentofu_version_info
+      changed_when: false
+    - name: Check opentofu correct version
+      ansible.builtin.assert:
+        that:
+          - opentofu_version_info.stdout is ansible.builtin.search(opentofu_version)
