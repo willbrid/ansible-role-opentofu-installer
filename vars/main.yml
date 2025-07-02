@@ -1,0 +1,6 @@
+---
+host_architecture: "{{ 'amd64' if ansible_architecture == 'x86_64' else ansible_architecture }}"
+opentofu_archive_filename: "tofu_{{ opentofu_version }}_linux_{{ host_architecture }}.tar.gz"
+opentofu_sha256sum_filename: "tofu_{{ opentofu_version }}_SHA256SUMS"
+opentofu_generated_sha256sum_filename: "tofu_{{ opentofu_version }}_linux_{{ host_architecture }}.sha256sum"
+opentofu_download_baseurl: "https://github.com/opentofu/opentofu/releases/download/v{{ opentofu_version }}"
