@@ -1,6 +1,6 @@
 # Ansible-role-opentofu-installer
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/willbrid/ansible-role-opentofu-installer/blob/main/LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/willbrid/ansible-role-opentofu-installer/blob/main/LICENSE) [![CI](https://github.com/willbrid/ansible-role-opentofu-installer/actions/workflows/ci.yml/badge.svg)](https://github.com/willbrid/ansible-role-opentofu-installer/actions/workflows/ci.yml)
 
 Le rôle **ansible-role-opentofu-installer** permet d’installer **OpenTofu** en version standalone sur les systèmes Linux en téléchargeant et plaçant directement le binaire officiel dans un répertoire binaire système (par défaut **/usr/local/bin**). Le rôle ne dépend d’aucun gestionnaire de paquets et garantit une installation simple, propre et portable.
 
