@@ -1,0 +1,30 @@
+---
+- name: Download opentofu archive file in /tmp dir
+  ansible.builtin.get_url:
+    url: "{{ opentofu_download_baseurl }}/{{ opentofu_archive_filename }}"
+    dest: "/tmp/{{ opentofu_archive_filename }}"
+    mode: 0755
+
+- name: Verify checksum for opentofu archive file
+  when: should_verify_opentofu_checksum
+  block:
+    - name: Download opentofu archive file checksum in /tmp dir
+      ansible.builtin.get_url:
+        url: "{{ opentofu_download_baseurl }}/{{ opentofu_sha256sum_filename }}"
+        dest: "/tmp/{{ opentofu_sha256sum_filename }}"
+        mode: 0755
+
+    - name: Generate checksum file for verification
+      ansible.builtin.shell: cd /tmp && sha256sum "{{ opentofu_archive_filename }}" > "{{ opentofu_generated_sha256sum_filename }}"
+      changed_when: false
+
+    - name: Verify checksum file
+      ansible.builtin.shell: "cd /tmp && sha256sum -c {{ opentofu_generated_sha256sum_filename }}"
+      register: opentofu_checksum_result
+      changed_when: false
+
+    - name: Check if opentofu archive file checksum is correct
+      ansible.builtin.assert:
+        that:
+          - opentofu_checksum_result.rc == 0
+        fail_msg: "the opentofu archive checksum is not correct"
