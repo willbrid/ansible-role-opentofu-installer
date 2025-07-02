@@ -28,3 +28,33 @@
         that:
           - opentofu_checksum_result.rc == 0
         fail_msg: "the opentofu archive checksum is not correct"
+
+- name: Create opentofu unarchived dir in /tmp
+  ansible.builtin.file:
+    path: "/tmp/{{ opentofu_archive_filename.split('.tar.gz')[0] }}"
+    state: directory
+    mode: 0755
+
+- name: Unarchive opentofu archive file
+  ansible.builtin.unarchive:
+    src: "/tmp/{{ opentofu_archive_filename }}"
+    dest: "/tmp/{{ opentofu_archive_filename.split('.tar.gz')[0] }}"
+    remote_src: true
+    mode: 0755
+
+- name: Copy opentofu binary file to bin dir
+  ansible.builtin.copy:
+    src: "/tmp/{{ opentofu_archive_filename.split('.tar.gz')[0] }}/tofu"
+    dest: "{{ opentofu_bin_dir }}/tofu"
+    mode: 0755
+    remote_src: true
+
+- name: Find files and directories in /tmp starting with tofu
+  ansible.builtin.find:
+    paths: "/tmp"
+    patterns: "^tofu.*"
+    use_regex: true
+    file_type: any
+  register: opentofu_installation_items
+  notify: Cleanup all opentofu installation items
+  changed_when: true
