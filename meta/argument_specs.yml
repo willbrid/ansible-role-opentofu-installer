@@ -1,0 +1,26 @@
+---
+argument_specs:
+  main:
+    short_description: "Install opentofu for Linux"
+    description:
+      - "Install opentofu for linux distros : RedHat, Debian, Ubuntu,..."
+    author: "WillBrid"
+    options:
+      opentofu_version:
+        type: str
+        required: false
+        default: "1.10.2"
+        description:
+          - "opentofu version"
+      opentofu_bin_dir:
+        type: str
+        required: false
+        default: "/usr/local/bin"
+        description:
+          - "opentofu installation directory"
+      should_verify_helm_checksum:
+        type: bool
+        required: false
+        default: true
+        description:
+          - "whether to verify opentofu archive file checksum"
