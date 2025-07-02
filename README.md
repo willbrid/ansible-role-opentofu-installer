@@ -13,7 +13,7 @@ Le rôle **ansible-role-opentofu-installer** permet d’installer **OpenTofu** e
 |Nom|Type|Description|Obligatoire|Valeur par défaut|
 |---|----|-----------|-----------|-----------------|
 `opentofu_version`|str|numéro de version d'opentofu. Format : x.y.z|non|`"1.10.2"`
-`opentofu_bin_dir`|str|répertoire d'installation du binaire d'opentofu|non|`"/usr/local/bin`
+`opentofu_bin_dir`|str|répertoire d'installation du binaire d'opentofu|non|`"/usr/local/bin"`
 `should_verify_opentofu_checksum`|bool|dire s'il faut vérifier l'intégrité du fichier archive d'opentofu après téléchargement|non|`true`
 
 ## Dépendances
