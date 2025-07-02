@@ -1,0 +1,6 @@
+---
+- name: Cleanup all opentofu installation items
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    state: absent
+  loop: "{{ opentofu_installation_items.files }}"
