@@ -1,0 +1,14 @@
+---
+- name: Get opentofu installed version
+  ansible.builtin.command: "tofu --version"
+  register: opentofu_check_info
+  changed_when: false
+  failed_when: false
+
+- name: Check if opentofu is already installed with the correct version
+  ansible.builtin.set_fact:
+    opentofu_already_installed: "{{ opentofu_check_info is defined and opentofu_check_info.stdout is ansible.builtin.search(opentofu_version) }}"
+
+- name: Install opentofu
+  ansible.builtin.include_tasks: "install-opentofu.yml"
+  when: not opentofu_already_installed
