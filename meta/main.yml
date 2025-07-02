@@ -19,10 +19,12 @@ galaxy_info:
         - "noble"
         - "jammy"
   galaxy_tags:
-    - monitoring
+    - infrastructure
     - node
-    - prometheus
-    - exporter
+    - server
+    - provisioner
     - system
+    - cloud
+    - iac
 
 dependencies: []
