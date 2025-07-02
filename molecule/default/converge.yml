@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: true
+  vars:
+    opentofu_version: "1.10.2"
+    should_verify_helm_checksum: true
+
+  tasks:
+    - name: Include willbrid.opentofu_installer
+      ansible.builtin.include_role:
+        name: "willbrid.opentofu_installer"
