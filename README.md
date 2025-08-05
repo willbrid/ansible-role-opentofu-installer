@@ -51,6 +51,7 @@ vim $HOME/install-opentofu/playbook.yml
 ```yaml
 ---
 - hosts: localhost
+  become: true
   vars:
     opentofu_version: "1.10.2"
     should_verify_opentofu_checksum: true
