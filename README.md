@@ -2,27 +2,27 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/willbrid/ansible-role-opentofu-installer/blob/main/LICENSE) [![CI](https://github.com/willbrid/ansible-role-opentofu-installer/actions/workflows/ci.yml/badge.svg)](https://github.com/willbrid/ansible-role-opentofu-installer/actions/workflows/ci.yml)
 
-Le rôle **ansible-role-opentofu-installer** permet d’installer **OpenTofu** en version standalone sur les systèmes Linux en téléchargeant et plaçant directement le binaire officiel dans un répertoire binaire système (par défaut **/usr/local/bin**). Le rôle ne dépend d’aucun gestionnaire de paquets et garantit une installation simple, propre et portable.
+The **ansible-role-opentofu-installer** role allows you to install **OpenTofu** in standalone mode on Linux systems by directly downloading and placing the official binary into a system binary directory (by default **/usr/local/bin**). The role does not depend on any package manager and guarantees a simple, clean, and portable installation.
 
-## Exigences
+## Requirements
 
-- **Systèmes Linux** : distributions RedHat et Debian
+- **Linux Systems** : Red Hat and Debian distributions
 
-## Description des Variables
+## Description of Variables
 
-|Nom|Type|Description|Obligatoire|Valeur par défaut|
-|---|----|-----------|-----------|-----------------|
-`opentofu_version`|str|numéro de version d'opentofu. Format : x.y.z|non|`"1.10.2"`
-`opentofu_bin_dir`|str|répertoire d'installation du binaire d'opentofu|non|`"/usr/local/bin"`
-`should_verify_opentofu_checksum`|bool|dire s'il faut vérifier l'intégrité du fichier archive d'opentofu après téléchargement|non|`true`
+|Name|Type|Description|Mandatory|Default value|
+|----|----|-----------|---------|-------------|
+`opentofu_version`|str|opentofu version number. Format: x.y.z|no|`"1.10.2"`
+`opentofu_bin_dir`|str|opentofu binary installation directory|no|`"/usr/local/bin"`
+`should_verify_opentofu_checksum`|bool|specify whether the integrity of the opentofu archive file should be checked after downloading.|no|`true`
 
-## Dépendances
+## Dependencies
 
-Aucune.
+None.
 
-## Exemple Playbook
+## Example Playbook
 
-- Installation du rôle
+- Role installation
 
 ```bash
 mkdir -p $HOME/install-opentofu
@@ -42,7 +42,7 @@ vim $HOME/install-opentofu/requirements.yml
 cd $HOME/install-opentofu && ansible-galaxy install --force -r requirements.yml
 ```
 
-- Utilisation du rôle dans un playbook
+- Using the role in a playbook
 
 ```bash
 vim $HOME/install-opentofu/playbook.yml
@@ -64,10 +64,10 @@ vim $HOME/install-opentofu/playbook.yml
 cd $HOME/install-opentofu && ansible-playbook playbook.yml
 ```
 
-## Licence
+## License
 
 MIT
 
-## Informations sur l'auteur
+## Author Information
 
 William Bridge NGASSAM
